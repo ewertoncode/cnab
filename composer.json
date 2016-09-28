@@ -16,7 +16,6 @@
     "require": {
         "php": ">=5.3.9"
     },
-    //"minimum-stability": "dev",
     "autoload": {
         "psr-4": {
             "Ewerton\\Cnab\\": "src/Ewerton/Cnab"
