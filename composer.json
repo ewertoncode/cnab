@@ -1,0 +1,28 @@
+{
+    "name": "ewertoncardoso/cnab",
+    "type": "library",
+    "version": "0.0.1",
+    "description": "Projeto utilizado para criar arquivos de remessa no formato CNAB",
+    "keywords": ["boleto", "remessa", "cnab", "cnab240"],
+    "licence": "MIT",
+    "authors": [
+        {
+            "name": "Ewerton Cardoso Silva",
+            "email": "ewerton.code@gmail.com",
+            "role": "creator"
+        }
+    ],
+    "require-dev": { },
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Ewerton\\Cnab\\": "src/Ewerton/Cnab"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}
