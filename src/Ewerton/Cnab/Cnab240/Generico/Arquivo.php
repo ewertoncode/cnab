@@ -6,7 +6,7 @@
  */
 
 
-namespace Ewerton\Cnab;
+namespace Ewerton\Cnab\Cnab240\Generico;
 
 
 trait Arquivo

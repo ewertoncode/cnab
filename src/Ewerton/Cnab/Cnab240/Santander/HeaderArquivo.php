@@ -1,10 +1,10 @@
 <?php
 
-namespace Ewerton\Cnab\Cnab240\Satander;
+namespace Ewerton\Cnab\Cnab240\Santander;
 
+use Ewerton\Cnab\Cnab240\Generico\HeaderArquivo as HeaderArquivoGenerico;
 
-
-class HeaderArquivo extends \Ewerton\Ewerton\Cnab\Cnab240\Generico\HeaderArquivo
+class HeaderArquivo extends HeaderArquivoGenerico
 {
 
     /**
