@@ -9,6 +9,9 @@
 namespace Ewerton\Cnab\Cnab240\Generico;
 
 
+use Ewerton\Cnab\Banco;
+use Symfony\Component\Config\Definition\Exception\Exception;
+
 trait Arquivo
 {
 
@@ -16,9 +19,19 @@ trait Arquivo
 
     private $banco;
 
-    private $lote = '0000';
+    private $lote;
 
-    private $registro = '0';
+    private $registro;
+
+    public function __construct($codigoBanco)
+    {
+        if((int) $codigoBanco > 0) {
+            $this->codigoBanco = sprintf("%03d", (int)$codigoBanco);
+            $this->banco = str_pad(substr(strtoupper(Banco::getBanco($this->getCodigoBanco())['nome_do_banco']), 0,30), 30);
+        } else {
+            throw new \Exception("Código de banco inválido");
+        }
+    }
 
     /**
      * @return mixed
@@ -29,23 +42,6 @@ trait Arquivo
         return $this->codigoBanco;
     }
 
-    /**
-     * @param mixed $codigoBanco
-     * @throws \Exception
-     * @return Arquivo
-     * Caixa = 104, Santander = 033
-     * pos: [1, 3]
-     * picture: '9(3)'
-     */
-    public function setCodigoBanco($codigoBanco)
-    {
-        if((int) $codigoBanco > 0) {
-            $this->codigoBanco = sprintf("%03d", (int)$codigoBanco);
-        } else {
-            throw new \Exception("Código de banco inválido");
-        }
-        return $this;
-    }
 
     /**
      * @return string
@@ -55,21 +51,13 @@ trait Arquivo
         return $this->banco;
     }
 
-    /**
-     * @return Arquivo
-     */
-    public function setBanco()
-    {
-        $this->banco = Banco::getBanco($this->getCodigoBanco());
-        return $this;
-    }
 
     /**
      * @return string
      */
     public function getLote()
     {
-        return $this->lote;
+        return sprintf("%04d", $this->lote);
     }
 
     /**
@@ -94,9 +82,14 @@ trait Arquivo
      * @param string $registro
      * @return Arquivo
      */
-    public function setRegistro($registro)
+    public function setRegistro($registro = '0')
     {
-        $this->registro = $registro;
+        if(strlen($registro) == 1) {
+            $this->registro = $registro;
+        } else {
+            throw new Exception("Tamanho inválido");
+        }
+
         return $this;
     }
 

@@ -8,11 +8,24 @@ namespace Ewerton\Cnab\Cnab240\Generico;
 
 
 use Ewerton\Cnab\Cnab240\Generico\CnabInterface;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Zend\I18n\Validator\DateTime;
 
-abstract class HeaderArquivo implements CnabInterface
+abstract class HeaderLote implements CnabInterface
 {
     use Arquivo;
+
+    /**
+     * @var string
+     */
+    protected $tipoOperacao;
+
+    protected $tipoServico;
+
+    /**
+     * @var integer
+     */
+    protected $nVersaoLayout;
 
     /**
      * @var integer
@@ -32,17 +45,73 @@ abstract class HeaderArquivo implements CnabInterface
     /**
      * @var integer
      */
-    protected $codigoRemessa = 1;
+    protected $dataGravacao;
 
-    /**
-     * @var integer
-     */
-    protected $dataGeracao;
 
     /**
      * @return string
      */
-    abstract public function criaLinha();
+    public function getTipoOperacao()
+    {
+        return $this->tipoOperacao;
+    }
+
+    /**
+     * @param string $tipoOperacao
+     * @return HeaderLote
+     * pos[9-9]
+     * picture X(1)
+     */
+    public function setTipoOperacao($tipoOperacao)
+    {
+        if(strlen($tipoOperacao) == 1) {
+            $this->tipoOperacao = $tipoOperacao;
+        } else {
+            throw new Exception('Tipo operação: Tamanho inválido');
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTipoServico()
+    {
+        return $this->tipoServico;
+    }
+
+    /**
+     * pos[9-9]
+     * picture X(1)
+     * @param integer $tipoServico
+     * @return HeaderLote
+     */
+    public function setTipoServico($tipoServico)
+    {
+        $this->tipoServico = sprintf("%02d", $tipoServico);
+
+        return $this;
+    }
+
+    /**
+     * @param mixed $nVersaoLayout
+     * @return HeaderLote
+     */
+    public function setNVersaoLayout($nVersaoLayout)
+    {
+        $this->nVersaoLayout = $nVersaoLayout;
+        return $this;
+    }
+
+
+    /**
+     * @return int
+     */
+    public function getNVersaoLayout()
+    {
+        return sprintf("%03d", $this->nVersaoLayout);
+    }
 
     /**
      * @return mixed
@@ -111,29 +180,19 @@ abstract class HeaderArquivo implements CnabInterface
     /**
      * @return int
      */
-    public function getCodigoRemessa() {
-        return $this->codigoRemessa;
+    public function getDataGravacao()
+    {
+        return $this->dataGravacao;
     }
 
     /**
-     * @return integer
+     * @param int $dataGravacao
+     * @return HeaderLote
      */
-    public function getDataGeracao()
+    public function setDataGravacao(\DateTime $dataGravacao)
     {
-        return $this->dataGeracao;
-    }
-
-    /**
-     * @param \DateTime $dataGeracao
-     * @return HeaderArquivo
-     */
-    public function setDataGeracao(\DateTime $dataGeracao)
-    {
-        $this->dataGeracao = (int)$dataGeracao->format('dmY');
+        $this->dataGravacao = (int)$dataGravacao->format('dmY');
         return $this;
     }
-
-
-
 
 }
