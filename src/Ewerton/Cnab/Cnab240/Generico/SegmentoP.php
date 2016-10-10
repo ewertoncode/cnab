@@ -171,7 +171,7 @@ abstract class SegmentoP implements CnabInterface
      */
     public function getVencimento()
     {
-        return $this->vencimento;
+        return sprintf("%08d", $this->vencimento);
     }
 
     /**
@@ -233,7 +233,7 @@ abstract class SegmentoP implements CnabInterface
      */
     public function getDataEmissao()
     {
-        return $this->dataEmissao;
+        return sprintf("%08d", $this->dataEmissao);
     }
 
     /**
@@ -251,7 +251,7 @@ abstract class SegmentoP implements CnabInterface
      */
     public function getDataJurosMora()
     {
-        return $this->dataJurosMora;
+        return sprintf("%08d", $this->dataJurosMora);
     }
 
     /**

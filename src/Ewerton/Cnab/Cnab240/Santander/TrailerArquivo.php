@@ -22,9 +22,11 @@ class TrailerArquivo extends TrailerArquivoGenerico
         //pos[9-17]
         $linha .= sprintf(str_pad('', 9));
         //pos[18-23]
+        $linha .= $this->getQtdLotes();
+        //pos[24-29]
         $linha .= $this->getQtdRegistros();
-        //pos[24-240]
-        $linha .= sprintf(str_pad('', 217));
+        //pos[30-240]
+        $linha .= sprintf(str_pad('', 211));
 
         $linha .= "\n";
 

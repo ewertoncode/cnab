@@ -82,7 +82,10 @@ abstract class SegmentoQ implements CnabInterface
      */
     protected $totalParcelas;
 
-
+    /**
+     * @var integer
+     */
+    protected $numeroPlano;
 
     /**
      * @var
@@ -251,7 +254,8 @@ abstract class SegmentoQ implements CnabInterface
      */
     public function getCidade()
     {
-        return str_pad(strtoupper(substr($this->cidade, 0,15)), 15, ' ', STR_PAD_RIGHT);;
+        $cidade = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/"),explode(" ","a A e E i I o O u U n N"),$this->cidade);
+        return str_pad(strtoupper(substr($cidade, 0,15)), 15, ' ', STR_PAD_RIGHT);
     }
 
     /**
@@ -333,6 +337,24 @@ abstract class SegmentoQ implements CnabInterface
     public function setTotalParcelas($totalParcelas)
     {
         $this->totalParcelas = $totalParcelas;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNumeroPlano()
+    {
+        return sprintf("%03d", $this->numeroPlano);
+    }
+
+    /**
+     * @param mixed $numeroPlano
+     * @return SegmentoQ
+     */
+    public function setNumeroPlano($numeroPlano)
+    {
+        $this->numeroPlano = $numeroPlano;
         return $this;
     }
 

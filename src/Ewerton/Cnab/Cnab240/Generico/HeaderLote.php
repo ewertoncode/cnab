@@ -182,7 +182,7 @@ abstract class HeaderLote implements CnabInterface
      */
     public function getDataGravacao()
     {
-        return $this->dataGravacao;
+        return sprintf("%08d", $this->dataGravacao);
     }
 
     /**

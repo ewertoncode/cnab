@@ -97,7 +97,7 @@ abstract class SegmentoR implements CnabInterface
      */
     public function getDataMulta()
     {
-        return $this->dataMulta;
+        return sprintf("%08d", $this->dataMulta);
     }
 
     /**

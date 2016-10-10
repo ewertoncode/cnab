@@ -18,6 +18,30 @@ abstract class TrailerArquivo implements CnabInterface
     /**
      * @var integer
      */
+    protected $qtdLotes;
+
+    /**
+     * @return int
+     */
+    public function getQtdLotes()
+    {
+        return sprintf("%06d", $this->qtdLotes);
+    }
+
+    /**
+     * @param int $qtdLotes
+     * @return TrailerArquivo
+     */
+    public function setQtdLotes($qtdLotes)
+    {
+        $this->qtdLotes = $qtdLotes;
+        return $this;
+    }
+
+
+    /**
+     * @var integer
+     */
     protected $qtdRegistros;
 
     /**

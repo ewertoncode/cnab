@@ -39,7 +39,7 @@ class HeaderArquivo extends HeaderArquivoGenerico
      */
     public function getCodigoTransmissao()
     {
-        return sprintf("%015", $this->codigoTransmissao);
+        return $this->codigoTransmissao;
     }
 
     /**

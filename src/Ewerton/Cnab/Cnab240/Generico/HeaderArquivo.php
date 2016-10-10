@@ -120,7 +120,7 @@ abstract class HeaderArquivo implements CnabInterface
      */
     public function getDataGeracao()
     {
-        return $this->dataGeracao;
+        return sprintf("%08d", $this->dataGeracao);
     }
 
     /**

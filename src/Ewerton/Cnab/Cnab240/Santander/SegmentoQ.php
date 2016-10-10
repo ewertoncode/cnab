@@ -56,7 +56,7 @@ class SegmentoQ extends SegmentoQGenerico
         //pos[216 –218]
         $linha .= $this->getTotalParcelas();
         //pos[219 – 221]
-        $linha .= '000';
+        $linha .= $this->getNumeroPlano();
         //pos[222-240]
         $linha .= sprintf(str_pad('', 19));
 
