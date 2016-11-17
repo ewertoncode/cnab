@@ -2,8 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9c01899-4f25-4850-b1ea-74476eba3259" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Banrisul/DadosBancarios.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Banrisul/HeaderArquivoBanrisul.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Banrisul/HeaderLoteBanrisul.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Banrisul/SegmentoPBanrisul.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Banrisul/SegmentoQBanrisul.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Banrisul/SegmentoRBanrisul.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Banrisul/TrailerArquivoBanrisul.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Banrisul/TrailerLoteBanrisul.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Bradesco/DadosBancarios.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Bradesco/HeaderArquivoBradesco.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Bradesco/HeaderLoteBradesco.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Bradesco/SegmentoPBradesco.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Bradesco/SegmentoQBradesco.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Bradesco/SegmentoRBradesco.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Bradesco/TrailerArquivoBradesco.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Bradesco/TrailerLoteBradesco.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Sicoob/DadosBancarios.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Sicoob/HeaderArquivoSicoob.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Sicoob/HeaderLoteSicoob.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Sicoob/SegmentoPSicoob.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Sicoob/SegmentoQSicoob.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Sicoob/SegmentoRSicoob.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Sicoob/TrailerArquivoSicoob.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Sicoob/TrailerLoteSicoob.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Ewerton/Cnab/Banco.php" afterPath="$PROJECT_DIR$/src/Ewerton/Cnab/Banco.php" />
     </list>
     <ignored path="ewertoncnab.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,21 +48,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="composer.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/composer.json">
+      <file leaf-file-name="Arquivo.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Generico/Arquivo.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="1" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
+            <state relative-caret-position="270">
+              <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Arquivo.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Generico/Arquivo.php">
+      <file leaf-file-name="Banco.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Ewerton/Cnab/Banco.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="198">
+              <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -64,6 +88,7 @@
       <list>
         <option value="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Santander/HeaderArquivo.php" />
         <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/src/Ewerton/Cnab/Banco.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
@@ -150,6 +175,32 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ewertoncnab" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cnab" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ewerton" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cnab" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cnab240" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -166,6 +217,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/Ewerton" />
       <recent name="$PROJECT_DIR$/src/Ewerton/Cnab" />
@@ -185,12 +237,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1475100438313</updated>
-      <workItem from="1479342727965" duration="47000" />
+      <workItem from="1479342727965" duration="342000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47000" />
+    <option name="totallyTimeSpent" value="342000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="1" width="1370" height="773" extended-state="6" />
@@ -281,8 +333,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Generico/Arquivo.php">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Sicoob/DadosBancarios.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Bradesco/DadosBancarios.php">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ewerton/Cnab/Cnab240/Banrisul/DadosBancarios.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ewerton/Cnab/Banco.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
           <folding />
         </state>
       </provider>
