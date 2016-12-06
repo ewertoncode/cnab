@@ -71,7 +71,7 @@ class TrailerLoteBanrisul extends TrailerLoteGenerico
         //pos[116-240]
         $linha .= sprintf(str_pad('', 125));
 
-        $linha .= "\n";
+        $linha .= "\r\n";
 
         return $linha;
 

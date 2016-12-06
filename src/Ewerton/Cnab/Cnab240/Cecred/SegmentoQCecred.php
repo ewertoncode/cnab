@@ -1,10 +1,10 @@
 <?php
 
-namespace Ewerton\Cnab\Cnab240\Banrisul;
+namespace Ewerton\Cnab\Cnab240\Cecred;
 
 use Ewerton\Cnab\Cnab240\Generico\SegmentoQ as SegmentoQGenerico;
 
-class SegmentoQBanrisul extends SegmentoQGenerico
+class SegmentoQCecred extends SegmentoQGenerico
 {
 
 
@@ -14,7 +14,7 @@ class SegmentoQBanrisul extends SegmentoQGenerico
     public function criaLinha()
     {
         //pos[1-3]
-        $linha = '041';
+        $linha = $this->getCodigoBanco();
         //pos[4-7]
         $linha .= $this->getLote();
         //post[8-8]
@@ -39,7 +39,7 @@ class SegmentoQBanrisul extends SegmentoQGenerico
         $linha .= $this->getBairro();
         //pos[129-136]
         $linha .= $this->getCep();
-        //pos[127-151]
+        //pos[137-151]
         $linha .= $this->getCidade();
         //pos[152-153]
         $linha .= $this->getEstado();
@@ -55,11 +55,11 @@ class SegmentoQBanrisul extends SegmentoQGenerico
         $linha .= sprintf(str_pad('', 20));
         //pos[233 - 240] Exclusivo Febraban
         $linha .= sprintf(str_pad('', 8));
-
         $linha .= "\r\n";
 
         return $linha;
 
     }
+
 
 }

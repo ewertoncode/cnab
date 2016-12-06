@@ -1,34 +1,33 @@
 <?php
 
-namespace Ewerton\Cnab\Cnab240\Banrisul;
+namespace Ewerton\Cnab\Cnab240\Cecred;
 
 use Ewerton\Cnab\Cnab240\Generico\HeaderArquivo as HeaderArquivoGenerico;
-use Ewerton\Cnab\Cnab240\Banrisul\DadosBancarios;
 
 
-class HeaderArquivoBanrisul extends HeaderArquivoGenerico
+class HeaderArquivoCecred extends HeaderArquivoGenerico
 {
-
     use DadosBancarios;
-
 
     protected $numeroSequencialArquivo;
 
-    protected $versaoLayoutArquivo = 40;
+    protected $versaoLayoutArquivo = 87;
 
     protected $inscricao;
 
     protected $horaGeracao;
 
-    protected $densidadeArquivoGravacao = 0000;
+    protected $densidadeArquivoGravacao = ' ';
 
     /**
      * @return int
      */
     public function getDensidadeArquivoGravacao()
     {
-        return sprintf("%05d", $this->densidadeArquivoGravacao);
+        return sprintf("%5s", $this->densidadeArquivoGravacao);
     }
+
+
 
 
     /**
@@ -49,6 +48,7 @@ class HeaderArquivoBanrisul extends HeaderArquivoGenerico
         return $this;
     }
 
+
     /**
      *
      * @param integer $tipoEmpresa
@@ -65,7 +65,6 @@ class HeaderArquivoBanrisul extends HeaderArquivoGenerico
 
         return $this;
     }
-
 
     /**
      * @return mixed
@@ -100,7 +99,7 @@ class HeaderArquivoBanrisul extends HeaderArquivoGenerico
     public function criaLinha()
     {
         //pos[1-3] - 3 dígitos
-        $linha = '041';
+        $linha = $this->getCodigoBanco();
         //pos[4-7] - 4
         $linha .= $this->getLote();
         //post[8-8] - 1
@@ -115,18 +114,18 @@ class HeaderArquivoBanrisul extends HeaderArquivoGenerico
         $linha .= $this->getConvenio();
         //pos[53-57] - 5
         $linha .= $this->getAgencia();
-        //pos[58-58] - 1 - Dígito agência
-        $linha .= sprintf(str_pad('', 1));
+        //pos[58-58] - 1
+        $linha .= $this->getAgenciaDv();
         //pos[59-70] - 12
         $linha .= $this->getConta();
-        //pos[71-71] - 1 - Dígito conta
+        //pos[71-71] - 1
         $linha .= $this->getContaDv();
-        //pos[72-72] - 1 - Dígito A/C
+        //pos[72-72] - 1
         $linha .= sprintf(str_pad('', 1));
         //pos[73-102] - 30
         $linha .= $this->getNomeEmpresa();
         //pos[103-132] - 30
-        $linha .= $this->getNomeBanco();
+        $linha .= $this->getBanco();
         //pos[133-142] - 10
         $linha .= sprintf(str_pad('', 10));
         //pos[143-143] -1
@@ -164,12 +163,5 @@ class HeaderArquivoBanrisul extends HeaderArquivoGenerico
         return $this;
     }
 
-
-    public function getNomeBanco()
-    {
-        $banco = 'BANRISUL';
-        return sprintf("%-30s", $banco);
-
-    }
 
 }

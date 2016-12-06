@@ -106,6 +106,7 @@ abstract class SegmentoR implements CnabInterface
      */
     public function setDataMulta(\DateTime $vencimento, $addDias)
     {
+
         $novaData = $vencimento->add(new \DateInterval("P{$addDias}D"));
         $this->dataMulta = $novaData->format("dmY");
         return $this;
