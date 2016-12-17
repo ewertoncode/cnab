@@ -318,7 +318,7 @@ class SegmentoPSicoob extends SegmentoPGenerico
         //pos[196-220] Identificação do título na empresa
         $linha .= str_pad($this->getNumeroDocumento(), 25, ' ', STR_PAD_RIGHT);
         //pos[221 - 221] Código para protesto
-        $linha .= 0;
+        $linha .= 3;
         //pos[222-223] Número de dias para protesto
         $linha .= '00';
         //pos[224-224] Código para Baixa/Devolução

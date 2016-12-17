@@ -8,6 +8,7 @@ namespace Ewerton\Cnab\Cnab240\Generico;
 
 
 use Ewerton\Cnab\Cnab240\Generico\CnabInterface;
+use Ewerton\Cnab\Utils\FormataString;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Zend\I18n\Validator\DateTime;
 
@@ -191,7 +192,7 @@ abstract class SegmentoQ implements CnabInterface
      */
     public function setNomePagador($nomePagador)
     {
-        $this->nomePagador = $nomePagador;
+        $this->nomePagador = FormataString::retiraCaracteresEspecial($nomePagador);
         return $this;
     }
 
@@ -209,7 +210,7 @@ abstract class SegmentoQ implements CnabInterface
      */
     public function setEndereco($endereco)
     {
-        $this->endereco = $endereco;
+        $this->endereco = FormataString::retiraCaracteresEspecial($endereco);
         return $this;
     }
 
@@ -227,7 +228,7 @@ abstract class SegmentoQ implements CnabInterface
      */
     public function setBairro($bairro)
     {
-        $this->bairro = $bairro;
+        $this->bairro = FormataString::retiraCaracteresEspecial($bairro);
         return $this;
     }
 
@@ -254,7 +255,7 @@ abstract class SegmentoQ implements CnabInterface
      */
     public function getCidade()
     {
-        $cidade = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/"),explode(" ","a A e E i I o O u U n N"),$this->cidade);
+        $cidade = FormataString::retiraCaracteresEspecial($this->cidade);
         return str_pad(strtoupper(substr($cidade, 0,15)), 15, ' ', STR_PAD_RIGHT);
     }
 
