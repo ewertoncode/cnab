@@ -8,6 +8,7 @@ namespace Ewerton\Cnab\Cnab240\Generico;
 
 
 use Ewerton\Cnab\Cnab240\Generico\CnabInterface;
+use Ewerton\Cnab\Utils\FormataString;
 use Zend\I18n\Validator\DateTime;
 
 abstract class HeaderArquivo implements CnabInterface
@@ -104,7 +105,8 @@ abstract class HeaderArquivo implements CnabInterface
      */
     public function setNomeEmpresa($nomeEmpresa)
     {
-        $this->nomeEmpresa = str_pad(substr(strtoupper($nomeEmpresa), 0,30), 30);
+        $empresa = FormataString::retiraCaracteresEspecial($nomeEmpresa);
+        $this->nomeEmpresa = str_pad(substr(strtoupper($empresa), 0,30), 30);
         return $this;
     }
 
