@@ -58,10 +58,10 @@ class FormataString
             'м' => 'm', 'н' => 'n', 'о' => 'o', 'п' => 'p', 'р' => 'r', 'с' => 's',
             'т' => 't', 'у' => 'u', 'ф' => 'f', 'х' => 'h', 'ц' => 'c', 'ч' => 'ch',
             'ш' => 'sh', 'щ' => 'sch', 'ъ' => '', 'ы' => 'y', 'ь' => '', 'э' => 'e',
-            'ю' => 'yu', 'я' => 'ya'
+            'ю' => 'yu', 'я' => 'ya', '&' => ' ', '-' => ' '
         ];
 
-        return str_replace(array_keys($replace), $replace, $string);
+        return strtoupper(str_replace(array_keys($replace), $replace, $string));
     }
 
 }
