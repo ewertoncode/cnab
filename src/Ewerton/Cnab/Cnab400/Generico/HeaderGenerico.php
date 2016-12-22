@@ -30,7 +30,7 @@ abstract class HeaderGenerico implements CnabInterface
 
     /**
      * @param mixed $codigoCedente
-     * @return Header
+     * @return $this
      */
     public function setCodigoCedente($codigoCedente)
     {
@@ -48,7 +48,7 @@ abstract class HeaderGenerico implements CnabInterface
 
     /**
      * @param mixed $nomeEmpresa
-     * @return Header
+     * @return $this
      */
     public function setNomeEmpresa($nomeEmpresa)
     {
@@ -68,7 +68,7 @@ abstract class HeaderGenerico implements CnabInterface
 
     /**
      * @param mixed $dataGravacao
-     * @return Header
+     * @return $this
      */
     public function setDataGravacao(\DateTime $dataGravacao)
     {

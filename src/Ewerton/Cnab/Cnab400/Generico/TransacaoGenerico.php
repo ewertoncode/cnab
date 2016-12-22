@@ -11,6 +11,7 @@ namespace Ewerton\Cnab\Cnab400\Generico;
 
 use Ewerton\Cnab\Cnab240\Generico\CnabInterface;
 use Ewerton\Cnab\Utils\FormataString;
+use Symfony\Component\DomCrawler\Form;
 
 abstract class TransacaoGenerico implements CnabInterface
 {
@@ -235,7 +236,7 @@ abstract class TransacaoGenerico implements CnabInterface
      */
     public function setNomePagador($nomePagador)
     {
-        $this->nomePagador = $nomePagador;
+        $this->nomePagador = FormataString::retiraCaracteresEspecial($nomePagador);
         return $this;
     }
 
@@ -253,7 +254,7 @@ abstract class TransacaoGenerico implements CnabInterface
      */
     public function setEndereco($endereco)
     {
-        $this->endereco = $endereco;
+        $this->endereco = FormataString::retiraCaracteresEspecial($endereco);
         return $this;
     }
 
@@ -264,9 +265,18 @@ abstract class TransacaoGenerico implements CnabInterface
      */
     public function setBairro($bairro)
     {
-        $this->bairro = $bairro;
+        $this->bairro = FormataString::retiraCaracteresEspecial($bairro);
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getBairro()
+    {
+        return sprintf("%-12s", $this->bairro);
+    }
+
 
     /**
      * @return mixed

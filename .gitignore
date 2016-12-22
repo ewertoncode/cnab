@@ -6,4 +6,5 @@ vendor
 composer.phar
 phpunit.xml
 composer.lock
+.idea/workspace.xml
 .idea
