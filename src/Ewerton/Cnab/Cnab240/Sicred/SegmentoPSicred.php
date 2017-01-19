@@ -1,16 +1,17 @@
 <?php
 
-namespace Ewerton\Cnab\Cnab240\Cecred;
+namespace Ewerton\Cnab\Cnab240\Sicred;
 
 use Ewerton\Cnab\Cnab240\Generico\SegmentoP as SegmentoPGenerico;
+use Symfony\Component\HttpFoundation\Response;
 
-class SegmentoPCecred extends SegmentoPGenerico
+class SegmentoPSicred extends SegmentoPGenerico
 {
     use DadosBancarios;
 
     protected $carteira;
 
-    protected $formaCadastramento = 0;
+    protected $formaCadastramento = 1;
 
     protected $tipoDocumento = 1;
 
@@ -20,7 +21,7 @@ class SegmentoPCecred extends SegmentoPGenerico
 
     protected $codigoJurosMora = 1;
 
-    protected $codigoBaixaDevolucao = 2;
+    protected $codigoBaixaDevolucao = 1;
 
     protected $parcela;
 
@@ -29,6 +30,10 @@ class SegmentoPCecred extends SegmentoPGenerico
     protected $tipoFormulario = 1;
 
     protected $codigoCliente;
+
+    protected $posto;
+
+    protected $byte = 2;
 
     /**
      * @return mixed
@@ -40,7 +45,7 @@ class SegmentoPCecred extends SegmentoPGenerico
 
     /**
      * @param mixed $codigoCliente
-     * @return $this
+     * @return SegmentoPSicoob
      */
     public function setCodigoCliente($codigoCliente)
     {
@@ -59,7 +64,7 @@ class SegmentoPCecred extends SegmentoPGenerico
 
     /**
      * @param int $tipoFormulario
-     * @return $this
+     * @return SegmentoPSicoob
      */
     public function setTipoFormulario($tipoFormulario)
     {
@@ -78,7 +83,7 @@ class SegmentoPCecred extends SegmentoPGenerico
 
     /**
      * @param int $modalidade
-     * @return $this
+     * @return SegmentoPSicoob
      */
     public function setModalidade($modalidade)
     {
@@ -97,7 +102,7 @@ class SegmentoPCecred extends SegmentoPGenerico
 
     /**
      * @param int $parcela
-     * @return $this
+     * @return SegmentoPSicoob
      */
     public function setParcela($parcela)
     {
@@ -178,7 +183,7 @@ class SegmentoPCecred extends SegmentoPGenerico
      */
     public function setCarteira($carteira)
     {
-        $this->carteira = sprintf("%1d", $carteira);
+        $this->carteira = sprintf("%d", $carteira);
         return $this;
     }
 
@@ -204,9 +209,41 @@ class SegmentoPCecred extends SegmentoPGenerico
 
     public function getNossoNumero()
     {
-        $conta = sprintf("%08d", $this->conta.$this->contaDv);
-        $nossoNumero = sprintf("%09d", $this->nossoNumero);
-        return sprintf("%-20s", $conta.$nossoNumero);
+        $hoje = new \DateTime();
+        $ano = $hoje->format('y');
+        $sequencialNN = sprintf("%05d", $this->nossoNumero);
+
+        $nossoNumero = sprintf("%04d", $this->agencia) . $this->getPosto() .
+            sprintf("%05d", $this->codigoCliente) . $ano . $this->byte . $sequencialNN;
+
+        $resto2 = $this->modulo_11($nossoNumero, 9, 1);
+        // esta rotina sofrer algumas altera��es para ajustar no layout do SICREDI
+        $digito = 11 - $resto2;
+        if ($digito > 9) {
+            $dv = 0;
+        } else {
+            $dv = $digito;
+        }
+
+        return sprintf("%-20d", $ano . $this->byte . $sequencialNN . $dv);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPosto()
+    {
+        return sprintf("%02d", $this->posto);
+    }
+
+    /**
+     * @param mixed $posto
+     * @return SegmentoPSicred
+     */
+    public function setPosto($posto)
+    {
+        $this->posto = $posto;
+        return $this;
     }
 
 
@@ -232,7 +269,7 @@ class SegmentoPCecred extends SegmentoPGenerico
         //pos[18-22] - 5
         $linha .= $this->getAgencia();
         //pos[23-23] -1
-        $linha .= $this->getAgenciaDv();
+        $linha .= str_pad('', 1);
         //pos[24-35] - 12
         $linha .= $this->getConta();
         //pos[36-36] - 1
@@ -240,9 +277,9 @@ class SegmentoPCecred extends SegmentoPGenerico
         //pos[37-37] - 1
         $linha .= sprintf(str_pad('', 1));
         //pos[38-57] - 12 nosso número + dv
-        $linha .= $this->getNossoNumero();      //
+        $linha .= $this->getNossoNumero();
         //pos[58-58] - 3
-        $linha .= $this->getCarteira();
+        $linha .= '1';
         //pos[59-59] - 1
         $linha .= $this->getFormaCadastramento();
         //pos[60-60]  - 1
@@ -250,7 +287,7 @@ class SegmentoPCecred extends SegmentoPGenerico
         //pos[61-61] - 1
         $linha .= $this->getIdentificacaoEmissao();
         //pos[62-62] - 1
-        $linha .=$this->getIdentificacaoDistribuicao();
+        $linha .= $this->getIdentificacaoDistribuicao();
         //pos[63-77] - 15
         $linha .= $this->getNumeroDocumento();
         //pos[78-85] - 8
@@ -262,7 +299,7 @@ class SegmentoPCecred extends SegmentoPGenerico
         //pos[106-106] Dígito da agencia
         $linha .= sprintf(str_pad('', 1));
         //pos[107-108]
-        $linha .= $this->getEspecie();
+        $linha .= '03';
         //pos[109-109]
         $linha .= $this->getAceite();
         //pos[110-117]
@@ -284,7 +321,7 @@ class SegmentoPCecred extends SegmentoPGenerico
         //pos[181 - 195] Valor abatimento
         $linha .= sprintf(str_pad('', 15, '0'));
         //pos[196-220] Identificação do título na empresa
-        $linha .= str_pad($this->getNumeroDocumento(), 25, ' ', STR_PAD_RIGHT);
+        $linha .= str_pad(' ', 25);
         //pos[221 - 221] Código para protesto
         $linha .= 3;
         //pos[222-223] Número de dias para protesto
@@ -292,7 +329,7 @@ class SegmentoPCecred extends SegmentoPGenerico
         //pos[224-224] Código para Baixa/Devolução
         $linha .= $this->getCodigoBaixaDevolucao();
         //pos[225-227] - Números de dias para baixa/devolução
-        $linha .= sprintf(str_pad('', 3));
+        $linha .= '060';
         //pos[228-229] - Código moeda
         $linha .= '09';
         //pos[230-239] - Número contrato

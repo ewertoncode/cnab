@@ -124,7 +124,7 @@ class HeaderArquivo extends HeaderArquivoGenerico
         $linha .= $this->getVersaoLayoutArquivo();
         //pos[167 - 240]
         $linha .= sprintf(str_pad('', 74));
-        $linha .= "\n";
+        $linha .= "\r\n";
 
         return $linha;
 

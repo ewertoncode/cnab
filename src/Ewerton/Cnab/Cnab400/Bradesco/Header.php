@@ -66,8 +66,10 @@ class Header extends HeaderGenerico
         $linha .= str_pad('', 7);
         //pos [95-100]
         $linha .= $this->getDataGravacao();
-        //pos [101-110]
-        $linha .= str_pad('', 10);
+        //pos [101-108]
+        $linha .= str_pad('', 8);
+        //pos [109-110]
+        $linha .= 'MX';
         //pos [111-117]
         $linha .= $this->getSequencialRemessa();
         //pos [118-394]

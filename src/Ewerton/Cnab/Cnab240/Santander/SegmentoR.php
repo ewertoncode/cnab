@@ -50,7 +50,7 @@ class SegmentoR extends SegmentoRGenerico
         //pos[180-240]
         $linha .= sprintf(str_pad('', 61));
 
-        $linha .= "\n";
+        $linha .= "\r\n";
 
         return $linha;
 

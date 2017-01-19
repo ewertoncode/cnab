@@ -245,7 +245,7 @@ class SegmentoP extends SegmentoPGenerico
         $linha .= sprintf(str_pad('', 11));
 
 
-        $linha .= "\n";
+        $linha .= "\r\n";
 
         return $linha;
 

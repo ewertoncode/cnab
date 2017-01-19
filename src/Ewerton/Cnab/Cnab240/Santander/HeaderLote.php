@@ -101,7 +101,7 @@ class HeaderLote extends HeaderLoteGenerico
         $linha .= $this->getDataGravacao();
         //pos[200-240]
         $linha .= sprintf(str_pad('', 41));
-        $linha .= "\n";
+        $linha .= "\r\n";
 
         return $linha;
     }

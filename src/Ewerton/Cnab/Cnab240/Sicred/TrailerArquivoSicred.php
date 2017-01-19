@@ -1,10 +1,10 @@
 <?php
 
-namespace Ewerton\Cnab\Cnab240\Santander;
+namespace Ewerton\Cnab\Cnab240\Sicred;
 
 use Ewerton\Cnab\Cnab240\Generico\TrailerArquivo as TrailerArquivoGenerico;
 
-class TrailerArquivo extends TrailerArquivoGenerico
+class TrailerArquivoSicred extends TrailerArquivoGenerico
 {
 
 
@@ -25,8 +25,12 @@ class TrailerArquivo extends TrailerArquivoGenerico
         $linha .= $this->getQtdLotes();
         //pos[24-29]
         $linha .= $this->getQtdRegistros();
+        //pos[30-35] Quantidade de contas para conciliação
+        $linha .= sprintf(str_pad('', 6, '0'));
         //pos[30-240]
-        $linha .= sprintf(str_pad('', 211));
+        $linha .= sprintf(str_pad('', 205));
+
+        $linha .= "\r\n";
 
         return $linha;
 
