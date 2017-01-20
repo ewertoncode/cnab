@@ -65,7 +65,7 @@ abstract class SegmentoP implements CnabInterface
     /**
      * @var integer
      */
-    protected $dataJurosMora;
+    protected $dataJurosMora = 0;
 
     /**
      * @var integer
