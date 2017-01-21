@@ -17,7 +17,6 @@ class Transacao extends TransacaoGenerico
 {
 
     const CARTEIRA = 1;
-    const OCORRENCIA = '01';
     const COD_BANCO = '237';
     const TIPO_DOCUMENTO = '01';
     const ACEITE = 'N';
@@ -175,7 +174,7 @@ class Transacao extends TransacaoGenerico
         //pos [38-62]
         $linha .= $this->getNumeroDocumeto();
         //pos [63-65]
-        $linha .= self::COD_BANCO;
+        $linha .= str_pad('', 3, 0);
         //pos [66-66] código multa
         $linha .= '2';
         //pos [[67-70]
@@ -197,7 +196,7 @@ class Transacao extends TransacaoGenerico
         //pos[107-108]
         $linha .= str_pad('', 2);
         //pos [109-110]
-        $linha .= self::OCORRENCIA;
+        $linha .= $this->getOcorrencia();
         //pos [111-120]
         $linha .= $this->getSeuNumero();
         //pos [121-126]
@@ -205,9 +204,9 @@ class Transacao extends TransacaoGenerico
         //pos [127-139]
         $linha .= $this->getValor();
         //pos [140-142]
-        $linha .= str_pad('', 3);
+        $linha .= str_pad('', 3, 0);
         //pos [143-147]
-        $linha .= str_pad('', 5);
+        $linha .= str_pad('', 5, 0);
         //pos [148-149]
         $linha .= self::TIPO_DOCUMENTO;
         //pos [150-150]
@@ -218,8 +217,12 @@ class Transacao extends TransacaoGenerico
         $linha .= str_pad('', 4, 0);
         //pos [161-173]
         $linha .= $this->getValorMoraDia();
-        //pos [174-218]
-        $linha .= str_pad('', 45, 0);
+        //pos [174-179]
+        $linha .= $this->getDataDesconto();
+        //pos [180 - 192]
+        $linha .= $this->getValorDesconto();
+        //pos [193 - 218]
+        $linha .= str_pad('', 26, 0);
         //pos[219-220]
         $linha .= $this->getTipoInscricaoPagador();
         //pos[221-234]

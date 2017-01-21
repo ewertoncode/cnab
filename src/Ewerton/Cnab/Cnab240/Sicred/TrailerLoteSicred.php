@@ -1,12 +1,11 @@
 <?php
 
-namespace Ewerton\Cnab\Cnab240\Santander;
+namespace Ewerton\Cnab\Cnab240\Sicred;
 
-use Ewerton\Cnab\Cnab240\Generico\TrailerArquivo as TrailerArquivoGenerico;
+use Ewerton\Cnab\Cnab240\Generico\TrailerLote as TrailerLoteGenerico;
 
-class TrailerArquivo extends TrailerArquivoGenerico
+class TrailerLoteSicred extends TrailerLoteGenerico
 {
-
 
     /**
      * @return string
@@ -22,11 +21,15 @@ class TrailerArquivo extends TrailerArquivoGenerico
         //pos[9-17]
         $linha .= sprintf(str_pad('', 9));
         //pos[18-23]
-        $linha .= $this->getQtdLotes();
-        //pos[24-29]
         $linha .= $this->getQtdRegistros();
-        //pos[30-240]
-        $linha .= sprintf(str_pad('', 211));
+        //pos[24-115]
+        $linha .= sprintf(str_pad('', 92, '0'));
+        //pos[116-123]
+        $linha .= sprintf(str_pad('', 8));
+        //pos[124-240]
+        $linha .= sprintf(str_pad('', 117));
+
+        $linha .= "\r\n";
 
         return $linha;
 

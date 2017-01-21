@@ -1,10 +1,10 @@
 <?php
 
-namespace Ewerton\Cnab\Cnab240\Santander;
+namespace Ewerton\Cnab\Cnab240\Sicred;
 
 use Ewerton\Cnab\Cnab240\Generico\SegmentoQ as SegmentoQGenerico;
 
-class SegmentoQ extends SegmentoQGenerico
+class SegmentoQSicred extends SegmentoQGenerico
 {
 
 
@@ -39,7 +39,7 @@ class SegmentoQ extends SegmentoQGenerico
         $linha .= $this->getBairro();
         //pos[129-136]
         $linha .= $this->getCep();
-        //pos[127-151]
+        //pos[137-151]
         $linha .= $this->getCidade();
         //pos[152-153]
         $linha .= $this->getEstado();
@@ -49,23 +49,17 @@ class SegmentoQ extends SegmentoQGenerico
         $linha .= '000000000000000';
         //pos[170 - 209] Nome do Sacador/avalista
         $linha .= sprintf(str_pad('', 40));
-        //pos[210 –212] Identificador de carne
-        $linha .= $this->getIdentificadorCarne();
-        //pos[213 –215]
-        $linha .= $this->getNumeroParcela();
-        //pos[216 –218]
-        $linha .= $this->getTotalParcelas();
-        //pos[219 – 221]
-        $linha .= $this->getNumeroPlano();
-        //pos[222-240]
-        $linha .= sprintf(str_pad('', 19));
-
-
-
+        //pos[210 - 212] Código banco correspondente
+        $linha .= sprintf(str_pad('', 3, '0'));
+        //pos[213 - 232] Nosso número banco correspondente
+        $linha .= sprintf(str_pad('', 20));
+        //pos[233 - 240] Exclusivo Febraban
+        $linha .= sprintf(str_pad('', 8));
         $linha .= "\r\n";
 
         return $linha;
 
     }
+
 
 }

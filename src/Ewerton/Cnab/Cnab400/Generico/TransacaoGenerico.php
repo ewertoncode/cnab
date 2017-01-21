@@ -17,7 +17,6 @@ abstract class TransacaoGenerico implements CnabInterface
 {
 
     const CARTEIRA = 1;
-    const OCORRENCIA = '01';
     const COD_BANCO = '041';
     const TIPO_DOCUMENTO = '08';
     const ACEITE = 'N';
@@ -42,6 +41,9 @@ abstract class TransacaoGenerico implements CnabInterface
     protected $diasMulta;
     protected $multa;
     protected $sequencialRegistro;
+    protected $ocorrencia;
+    protected $dataDesconto;
+    protected $valorDesconto;
 
     /**
      * @return mixed
@@ -387,6 +389,62 @@ abstract class TransacaoGenerico implements CnabInterface
     public function setSequencialRegistro($sequencialRegistro)
     {
         $this->sequencialRegistro = $sequencialRegistro;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOcorrencia()
+    {
+        return sprintf("%02d", $this->ocorrencia);
+    }
+
+    /**
+     * @param mixed $ocorrencia
+     * @return TransacaoGenerico
+     */
+    public function setOcorrencia($ocorrencia)
+    {
+        $this->ocorrencia = $ocorrencia;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValorDesconto()
+    {
+        return sprintf("%013d", number_format($this->valorDesconto, 2,'',''));
+    }
+
+    /**
+     * @param mixed $valorDesconto
+     * @return $this
+     */
+    public function setValorDesconto($valorDesconto)
+    {
+        $this->valorDesconto = $valorDesconto;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDataDesconto()
+    {
+        return sprintf("%06d", $this->dataDesconto);
+    }
+
+    /**
+     * @param mixed $dataDesconto
+     * @return $this
+     */
+    public function setDataDesconto(\DateTime $dataDesconto)
+    {
+        if ($this->valorDesconto > 0){
+            $this->dataDesconto = $dataDesconto->format('dmy');
+        }
         return $this;
     }
 

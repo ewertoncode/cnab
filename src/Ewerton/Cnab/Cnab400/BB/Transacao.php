@@ -17,7 +17,6 @@ class Transacao extends TransacaoGenerico
 {
 
     const CARTEIRA = 1;
-    const OCORRENCIA = '01';
     const COD_BANCO = '001';
     const TIPO_DOCUMENTO = '01';
     const ACEITE = 'N';
@@ -241,7 +240,7 @@ class Transacao extends TransacaoGenerico
         //pos [107-108]
         $linha .= $this->getCarteira();
         //pos [109-110]
-        $linha .= self::OCORRENCIA;
+        $linha .= $this->getOcorrencia();
         //pos [111-120]
         $linha .= $this->getSeuNumero();
         //pos [121-126]
@@ -264,8 +263,12 @@ class Transacao extends TransacaoGenerico
         $linha .= str_pad('', 4, 0);
         //pos [161-173]
         $linha .= $this->getValorMoraDia();
-        //pos [174-218]
-        $linha .= str_pad('', 45, 0);
+        //pos [174-179]
+        $linha .= $this->getDataDesconto();
+        //pos [180 - 192]
+        $linha .= $this->getValorDesconto();
+        //pos [193 - 218]
+        $linha .= str_pad('', 26, 0);
         //pos[219-220]
         $linha .= $this->getTipoInscricaoPagador();
         //pos[221-234]

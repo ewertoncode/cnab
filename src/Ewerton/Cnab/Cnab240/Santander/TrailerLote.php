@@ -26,7 +26,7 @@ class TrailerLote extends TrailerLoteenerico
         //pos[24-240]
         $linha .= sprintf(str_pad('', 217));
 
-        $linha .= "\n";
+        $linha .= "\r\n";
 
         return $linha;
 

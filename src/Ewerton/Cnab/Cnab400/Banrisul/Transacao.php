@@ -16,7 +16,6 @@ class Transacao implements CnabInterface
 {
 
     const CARTEIRA = 1;
-    const OCORRENCIA = '01';
     const COD_BANCO = '041';
     const TIPO_DOCUMENTO = '08';
     const ACEITE = 'N';
@@ -41,6 +40,9 @@ class Transacao implements CnabInterface
     private $diasMulta;
     private $multa;
     private $sequencialRegistro;
+    private $ocorrencia;
+    private $dataDesconto = 0;
+    private $valorDesconto = 0;
 
     /**
      * @return mixed
@@ -379,7 +381,61 @@ class Transacao implements CnabInterface
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getOcorrencia()
+    {
+        return sprintf("%02d", $this->ocorrencia);
+    }
 
+    /**
+     * @param mixed $ocorrencia
+     * @return Transacao
+     */
+    public function setOcorrencia($ocorrencia)
+    {
+        $this->ocorrencia = $ocorrencia;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValorDesconto()
+    {
+        return sprintf("%013d", number_format($this->valorDesconto, 2,'',''));
+    }
+
+    /**
+     * @param mixed $valorDesconto
+     * @return $this
+     */
+    public function setValorDesconto($valorDesconto)
+    {
+        $this->valorDesconto = $valorDesconto;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDataDesconto()
+    {
+        return sprintf("%06d", $this->dataDesconto);
+    }
+
+    /**
+     * @param mixed $dataDesconto
+     * @return $this
+     */
+    public function setDataDesconto(\DateTime $dataDesconto)
+    {
+        if ($this->valorDesconto > 0){
+            $this->dataDesconto = $dataDesconto->format('dmy');
+        }
+        return $this;
+    }
 
 
     public function criaLinha()
@@ -402,7 +458,7 @@ class Transacao implements CnabInterface
         //pos[108-108]
         $linha .= self::CARTEIRA;
         //pos [109-110]
-        $linha .= self::OCORRENCIA;
+        $linha .= $this->getOcorrencia();
         //pos [111-120]
         $linha .= $this->getSeuNumero();
         //pos [121-126]
@@ -427,8 +483,12 @@ class Transacao implements CnabInterface
         $linha .= self::COD_MORA;
         //pos [162-173]
         $linha .= $this->getValorMoraDia();
-        //pos [174-218]
-        $linha .= str_pad('', 45, 0);
+        //pos [174-179]
+        $linha .= $this->getDataDesconto();
+        //pos [180 - 192]
+        $linha .= $this->getValorDesconto();
+        //pos [193 - 218]
+        $linha .= str_pad('', 26, 0);
         //pos[219-220]
         $linha .= $this->getTipoInscricaoPagador();
         //pos[221-234]

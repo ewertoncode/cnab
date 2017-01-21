@@ -14,7 +14,7 @@ class SegmentoRBanrisul extends SegmentoRGenerico
     public function criaLinha()
     {
         //pos[1-3]
-        $linha = $this->getCodigoBanco();
+        $linha = '041';
         //pos[4-7]
         $linha .= $this->getLote();
         //post[8-8]

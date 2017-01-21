@@ -30,7 +30,7 @@ abstract class SegmentoR implements CnabInterface
     /**
      * @var integer
      */
-    protected $dataMulta;
+    protected $dataMulta = 0;
 
     /**
      * @var integer

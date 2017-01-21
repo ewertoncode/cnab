@@ -306,11 +306,11 @@ class SegmentoPSicoob extends SegmentoPGenerico
         //pos[127-141]
         $linha .= $this->getValorMoraDia();
         //pos[142-142] Código do Desconto 1
-        $linha .= 0;
+        $linha .= $this->getCodigoDesconto();
         //pos[143 - 150] Data do Desconto 1
-        $linha .= sprintf(str_pad('', 8, '0'));
+        $linha .= $this->getDataDesconto();
         //pos[151 - 165] Valor ou Percentual do desconto concedido
-        $linha .= sprintf(str_pad('', 15, '0'));
+        $linha .= $this->getValorDesconto();
         //pos[166 - 180] Valor IOF
         $linha .= sprintf(str_pad('', 15, '0'));
         //pos[181 - 195] Valor abatimento
@@ -318,7 +318,7 @@ class SegmentoPSicoob extends SegmentoPGenerico
         //pos[196-220] Identificação do título na empresa
         $linha .= str_pad($this->getNumeroDocumento(), 25, ' ', STR_PAD_RIGHT);
         //pos[221 - 221] Código para protesto
-        $linha .= 0;
+        $linha .= 3;
         //pos[222-223] Número de dias para protesto
         $linha .= '00';
         //pos[224-224] Código para Baixa/Devolução

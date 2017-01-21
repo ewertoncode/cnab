@@ -1,23 +1,23 @@
 <?php
 
-namespace Ewerton\Cnab\Cnab240\Bradesco;
+namespace Ewerton\Cnab\Cnab240\Sicred;
 
 use Ewerton\Cnab\Cnab240\Generico\HeaderArquivo as HeaderArquivoGenerico;
 
 
-class HeaderArquivoBradesco extends HeaderArquivoGenerico
+class HeaderArquivoSicred extends HeaderArquivoGenerico
 {
     use DadosBancarios;
 
     protected $numeroSequencialArquivo;
 
-    protected $versaoLayoutArquivo = 84;
+    protected $versaoLayoutArquivo = 81;
 
     protected $inscricao;
 
     protected $horaGeracao;
 
-    protected $densidadeArquivoGravacao = 6250;
+    protected $densidadeArquivoGravacao = 1600;
 
     /**
      * @return int
@@ -53,7 +53,7 @@ class HeaderArquivoBradesco extends HeaderArquivoGenerico
      *
      * @param integer $tipoEmpresa
      * @throws \Exception
-     * @return HeaderArquivoBradesco
+     * @return $this
      */
     public function setTipoEmpresa($tipoEmpresa = 2)
     {
@@ -76,12 +76,11 @@ class HeaderArquivoBradesco extends HeaderArquivoGenerico
 
     /**
      * @param mixed $numeroSequencialArquivo
-     * @return HeaderArquivoBradesco
+     * @return $this
      */
     public function setNumeroSequencialArquivo($numeroSequencialArquivo)
     {
-        $sequecial = sprintf("%06d", $numeroSequencialArquivo);
-        $this->numeroSequencialArquivo = substr($sequecial, -6);
+        $this->numeroSequencialArquivo = sprintf("%06d", $numeroSequencialArquivo);
         return $this;
     }
 
@@ -112,11 +111,11 @@ class HeaderArquivoBradesco extends HeaderArquivoGenerico
         //post[19-32] - 14
         $linha .= $this->getInscricao();
         //pos[33-52] - 20
-        $linha .= $this->getConvenio();
+        $linha .= sprintf(str_pad('', 20));
         //pos[53-57] - 5
         $linha .= $this->getAgencia();
         //pos[58-58] - 1
-        $linha .= $this->getAgenciaDv();
+        $linha .= str_pad('', 1);
         //pos[59-70] - 12
         $linha .= $this->getConta();
         //pos[71-71] - 1

@@ -65,12 +65,27 @@ abstract class SegmentoP implements CnabInterface
     /**
      * @var integer
      */
-    protected $dataJurosMora;
+    protected $dataJurosMora = 0;
 
     /**
      * @var integer
      */
     protected $valorMoraDia;
+
+    /**
+     * @var
+     */
+    protected $codigoDesconto = 0;
+
+    /**
+     * @var
+     */
+    protected $valorDesconto = 0;
+
+    /**
+     * @var
+     */
+    protected $dataDesconto = 0;
 
     /**
      * @return mixed
@@ -245,6 +260,55 @@ abstract class SegmentoP implements CnabInterface
         $this->dataEmissao = $dataEmissao->format('dmY');
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getValorDesconto()
+    {
+        return sprintf("%015d", number_format($this->valorDesconto, 2,'',''));
+    }
+
+    /**
+     * @param mixed $valorDesconto
+     * @return SegmentoP
+     */
+    public function setValorDesconto($valorDesconto)
+    {
+        $this->valorDesconto = $valorDesconto;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDataDesconto()
+    {
+        return sprintf("%08d", $this->dataDesconto);
+    }
+
+    /**
+     * @param mixed $dataDesconto
+     * @return SegmentoP
+     */
+    public function setDataDesconto(\DateTime $dataDesconto)
+    {
+        if ($this->valorDesconto > 0){
+            $this->codigoDesconto = 1;
+            $this->dataDesconto = $dataDesconto->format('dmY');
+        }
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCodigoDesconto()
+    {
+        return $this->codigoDesconto;
+    }
+
+
 
     /**
      * @return int

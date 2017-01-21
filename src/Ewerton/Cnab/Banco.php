@@ -14,9 +14,10 @@ class Banco
     const CEF = 104;
     const BRADESCO = 237;
     const ITAU = 341;
-    const BANRISUL = 041;
+    const BANRISUL = 41;
     const SICOOB = 756;
     const CECRED = 85;
+    const SICREDI = 748;
 
     public static function getBanco($codigo)
     {
@@ -59,6 +60,11 @@ class Banco
             return array(
                 'codigo_do_banco' => self::CECRED,
                 'nome_do_banco' => 'CECRED',
+            );
+        }elseif ($codigo == self::SICREDI) {
+            return array(
+                'codigo_do_banco' => self::SICREDI,
+                'nome_do_banco' => 'SICREDI',
             );
         }
         else {
